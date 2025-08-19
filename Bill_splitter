@@ -1,0 +1,49 @@
+def main():
+    while True:
+        try:
+            further_info = int(input("Would you like to find out how much it costs individually? Press 1 for yes and 2 for no: "))
+            if further_info in [1, 2]:
+            # ✅ valid choice → exit loop
+                break
+            else:
+                print("Please choose either 1 or 2.")
+        except ValueError:
+            print("Invalid input! Please enter a number (1 or 2).")
+
+    print(f"You chose option {further_info}")
+  
+    dollars = dollars_to_float(input("How much was the total bill ? "))
+    percentage = percent_to_float(input("What is the GST and service charge of your country? "))
+    tax= dollars*percentage
+    Actual_food = dollars - tax
+    if further_info == 1:
+        num_people= spliting_people(input("How many people were there ? "))
+        food= Actual_food/num_people
+        indi_tax = tax/num_people
+        indi_total = dollars/num_people
+        print(f"The amount for the food is ${Actual_food:.2f}, given there are {num_people:.0f}, each person pays ${food:.2f} for food and ${indi_tax:.2f} of tax and hence totally per person is ${indi_total:.2f}")
+
+    elif further_info == 2:
+        print(f"The total bill was ${dollars:.2f},  the total amount of taxes  is ${tax:.2f}")
+        print(f"hence, the amount for the food is ${Actual_food:.2f} ")
+
+def dollars_to_float(d):
+    d=d.replace("$", "")
+    d=float(d)
+    return d 
+
+def percent_to_float(p):
+    p=p.replace("%", "")
+    p=float(p)/100
+    return p
+
+def spliting_people(s):
+         try:
+            return int(s)
+         except ValueError:
+            print("Invalid input! Defaulting to 1 person.")
+            return 1
+ 
+
+main()
+
