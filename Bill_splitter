@@ -3,7 +3,6 @@ def main():
         try:
             further_info = int(input("Would you like to find out how much it costs individually? Press 1 for yes and 2 for no: "))
             if further_info in [1, 2]:
-            # ✅ valid choice → exit loop
                 break
             else:
                 print("Please choose either 1 or 2.")
